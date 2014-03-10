@@ -17,7 +17,7 @@ public class Loan extends Payment{
     // loan principle amount
     private BigDecimal principle;  
     // loan term in years
-    private int termYear;   
+    private float termYear;   
     // Annual Percentage Rate, in decimal point (example: 0.05)
     private double annualPercentageRage;  
     // Action taken in each cycle's step    
@@ -41,6 +41,18 @@ public class Loan extends Payment{
         payment.setInterestPayment(this.getInterestPayment().setScale(2, BigDecimal.ROUND_CEILING));
         payment.setTotalInterestPayments(this.getTotalInterestPayments().setScale(2, BigDecimal.ROUND_CEILING));
         payment.setTotalPayments(this.getTotalPayments().setScale(2, BigDecimal.ROUND_CEILING));
+        
+        // if this is the last payment, and there is a remaining balance 
+        // add it to the monthly payment, and total payments and set the balance
+        // to zero
+        if (payment.getPaymentNumber() == this.getNumberOfMonths()) {
+            payment.setMonthlyPayment(
+                    payment.getMonthlyPayment().add(payment.getBalance()));
+            payment.setTotalPayments(
+                    payment.getTotalPayments().add(payment.getBalance()));
+            payment.setBalance(BigDecimal.ZERO);
+        }
+                        
         amortization.add(payment);
     } 
 
@@ -60,11 +72,11 @@ public class Loan extends Payment{
         this.calculationWanted = calculationWanted;
     }         
 
-    public int getTermYear() {
+    public float getTermYear() {
         return termYear;
     }
 
-    public void setTermYear(int term) {
+    public void setTermYear(float term) {
         this.termYear = term;
     }
 
@@ -83,6 +95,10 @@ public class Loan extends Payment{
 
     public void setAnnualPercentageRage(double interest) {
         this.annualPercentageRage = interest;
+    }
+    
+    public int getNumberOfMonths() {
+       return (int)Math.ceil(this.getTermYear() * 12);      
     }
 
 }
