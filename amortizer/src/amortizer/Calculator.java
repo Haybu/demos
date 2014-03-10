@@ -93,7 +93,7 @@ public class Calculator {
      * @return a list payments information during the loan term
      */
      public List<Payment> getPayments(double principle, double apr
-             , int termInYears) {
+             , float termInYears) {
          
         // a loan object to keep all evaluated loan values during computation
         Loan loan = new Loan();
@@ -148,7 +148,7 @@ public class Calculator {
      }
      
      private void performCalculation(Loan loan, Chain chain) {
-         if (loan.getPaymentNumber() > (loan.getTermYear() * 12) - 1) {
+         if (loan.getPaymentNumber() > (loan.getNumberOfMonths() - 1)) {
              return;
          } else {
             // peform a monthly payment calculation from START to END
