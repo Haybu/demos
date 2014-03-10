@@ -52,16 +52,6 @@ public class Amortizer {
        int termYears = 
                (termYears_str != null)? Integer.parseInt(termYears_str): 0;  // years
        
-       /**
-       double principle = 50000;
-      
-       // APR in decimal point
-       double interest = .05;
-       
-       // Loan term in years
-       int termYears = 15;
-       * */
-       
        Calculator calculator = new Calculator();
        
        List<Payment> payments = 
