@@ -1,22 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package amortizer;
-
 /**
- *
- * @author hmohamed
+ * A last component in the chain to represent a terminating element. it helps 
+ * to perform post-calculation tasks, such as assembling the amortization payment 
+ * result after each month's payment calculations.
+ * 
+ * @author Haytham Mohamed
  */
+
 public class EndCalculator extends AbstractChain {
     
     @Override
      public void calculate(Loan loan) 
     {       
         if(loan.getCalculationWanted() == CalculationAction.DONE) {
-            // add a payment
+            // add a month's payment information into the amortization list
             loan.addAmotizationPayment();
             // start over
             loan.setCalculationWanted(CalculationAction.START);            

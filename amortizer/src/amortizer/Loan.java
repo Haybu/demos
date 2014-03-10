@@ -1,25 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package amortizer;
+/**
+ * A POJO (model) component to represent the initial loan information: principle,
+ * APR, and term of the loan.
+ * 
+ * It also keep a state of the calculation actions over the cycle of the monthly 
+ * computation.
+ * 
+ * @author Haytham Mohamed
+ */
 
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- *
- * @author hmohamed
- */
 public class Loan extends Payment{
     
+    // loan principle amount
     private BigDecimal principle;  
-    private int termYear;     
-    private double anualPercentageRage;    
+    // loan term in years
+    private int termYear;   
+    // Annual Percentage Rate, in decimal point (example: 0.05)
+    private double annualPercentageRage;  
+    // Action taken in each cycle's step    
     private CalculationAction calculationWanted;
     
+    // a list to keep the scheduled payment information during the loan term
     List<Payment> amortization;
     
     public Loan() {  
@@ -71,12 +75,12 @@ public class Loan extends Payment{
         setBalance(this.principle);
     }    
 
-    public double getAnualPercentageRage() {
-        return anualPercentageRage;
+    public double getAnnualPercentageRage() {
+        return annualPercentageRage;
     }
 
-    public void setAnualPercentageRage(double interest) {
-        this.anualPercentageRage = interest;
+    public void setAnnualPercentageRage(double interest) {
+        this.annualPercentageRage = interest;
     }
 
 }

@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package amortizer;
-
 /**
- *
- * @author hmohamed
+ * An interface to implement a chain of command to help cycle through
+ * each month's payment computations.
+ * 
+ * @author Haytham Mohamed
  */
+
 public interface Chain {
     
     public void setNextChain(Chain next);

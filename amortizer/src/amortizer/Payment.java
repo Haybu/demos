@@ -1,10 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package amortizer;
+/**
+ * A POJO (model) component to represent the loan monthly payment calculation.
+ * 
+ * @author Haytham Mohamed
+ */
 
 import java.math.BigDecimal;
 
@@ -14,12 +13,19 @@ import java.math.BigDecimal;
  */
 public class Payment {
     
+    // payment number
     private int paymentNumber;
+    // monthly payment amount. constant over the period of the loan
     private BigDecimal monthlyPayment;
+    // payment twoards interest
     private BigDecimal interestPayment;
+    // a monhtly loan balance amount
     private BigDecimal balance;  
-    private BigDecimal principlePayment;  
+    // payment towards the principle amount of the loan
+    private BigDecimal principlePayment; 
+    // total amount of payments made
     private BigDecimal totalPayments;
+    // total payments made towards the interest
     private BigDecimal totalInterestPayments;
           
     

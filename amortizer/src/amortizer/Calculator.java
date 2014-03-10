@@ -1,3 +1,4 @@
+package amortizer;
 /**
  * Amortization is paying off of debt in regular installments over 
  * a period of time.
@@ -51,8 +52,6 @@
  * @version     1.0
  */
 
-package amortizer;
-
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -98,7 +97,7 @@ public class Calculator {
          
         // a loan object to keep all evaluated loan values during computation
         Loan loan = new Loan();
-        loan.setAnualPercentageRage(apr);
+        loan.setAnnualPercentageRage(apr);
         loan.setPrinciple(new BigDecimal(principle));
         loan.setTermYear(termInYears); 
         loan.setCalculationWanted(CalculationAction.START);
