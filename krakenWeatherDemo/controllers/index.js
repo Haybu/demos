@@ -64,12 +64,10 @@ module.exports = function (app) {
                 res.redirect('/');
             });
 
-        }
-
-
-        // temporary, please delete me when done
-        //res.redirect('/');
-
+        } else {
+		console.log("no city selected. weather data should cleared from the model/screen");
+		res.redirect('/');
+	}
 
     });
 
