@@ -29,6 +29,8 @@ public class Loan extends Payment{
     public Loan() {  
         super();
         principle = new BigDecimal(0d);
+        termYear = 0;
+        annualPercentageRage = 0d;
     }
      
     public void addAmotizationPayment() {

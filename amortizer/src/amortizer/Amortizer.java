@@ -47,26 +47,82 @@ public class Amortizer {
        String principle_str = scanner.next();
        System.out.println();
        
+       while (principle_str == null) {
+           System.out.println("No input for loan amount is given. Please run the application again");
+           System.exit(0);
+       }
+       
        // interest rate in decimal point
        System.out.print("Please Enter the annual percentage rate in decimal point (example: 0.05) : ");
        String apr_str = scanner.next();
        System.out.println();
        
+       while (apr_str == null) {
+           System.out.println("No input for loan annua percentage rate is given."
+                     +" Please run the application again");
+           System.exit(0);
+       }
+       
        // loan term in number of years
        System.out.print("Please Enter the loan term in years: ");
        String termYears_str = scanner.next();
        
+        while (termYears_str == null) {
+           System.out.println("No input for loan term in years is given."
+                     + " Please run the application again");
+           System.exit(0);
+       }
+        
+       System.out.println();
+       
        // Loan pricinple amount
-       double principle = 
-               (principle_str != null)? Double.parseDouble(principle_str): 0d;
+       double principle = 0d;
+       
+       try {
+               principle = 
+                       (principle_str != null)? 
+                       Double.parseDouble(principle_str): 0d;
+               
+               if(principle == 0) {
+                   System.out.println("loan amount should be greater than zero");
+                   System.exit(0);
+               }
+       } catch (NumberFormatException ex) {
+           System.out.println("Please enter a valid loan principle amount.");
+           System.exit(0);
+       }
       
        // APR in decimal point
-       double interest = 
-               (apr_str != null)? Double.parseDouble(apr_str): 0d;
+       double interest = 0d;
+       
+       try {
+            interest = (apr_str != null)? Double.parseDouble(apr_str): 0d;
+            
+             if(interest > 1) {
+                   System.out.println("loan annual percentage rate should be in"
+                           + " decimal number format");
+                   System.exit(0);
+               }
+        } catch (NumberFormatException ex) {
+           System.out.println("Please enter a valid annual percentage rate.");
+           System.exit(0);
+        }    
        
        // Loan term in years
-       int termYears =          // in years
-               (termYears_str != null)? Integer.parseInt(termYears_str): 0;  
+       int termYears = 0;         // in years
+       
+       try {
+            termYears = (termYears_str != null)? 
+                    Integer.parseInt(termYears_str): 0; 
+            
+            if (termYears == 0) {
+                System.out.println("No scheduled payment for no loan term");
+                System.exit(0);
+            }
+       } catch (NumberFormatException ex) {
+           System.out.println("Please enter a valid loan term in years.");
+           System.exit(0);
+       }     
        
        // the calculator object that performs the computation during the 
        // loan period. It uses a chain of computation components.

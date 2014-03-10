@@ -22,13 +22,22 @@ public class MonthlyPaymentCalculator extends AbstractChain {
            
            // only perform the monthly payment calcuation once
            if(loan.getMonthlyPayment().doubleValue() == 0) {
-                double monthlyInterest = 
-                        loan.getAnnualPercentageRage() / 12;
+                              
+                double monthlyInterest = (loan.getAnnualPercentageRage() != 0)?
+                        loan.getAnnualPercentageRage() / 12 : 0;
 
-                double payment = 
-                  loan.getPrinciple().doubleValue() * 
+                double payment = 0;
+                
+                if (monthlyInterest > 0) {
+                
+                  payment =  loan.getPrinciple().doubleValue() * 
                     (monthlyInterest / (1 - Math.pow((1/(1 + monthlyInterest))
                             , (loan.getTermYear() * 12)))) ;
+                } else {
+                  payment = 
+                          loan.getPrinciple().doubleValue() 
+                          / (loan.getTermYear() * 12);
+                }
 
                 loan.setMonthlyPayment(new BigDecimal(payment));
            }
