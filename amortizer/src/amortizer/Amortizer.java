@@ -83,7 +83,7 @@ public class Amortizer {
                        (principle_str != null)? 
                        Double.parseDouble(principle_str): 0d;
                
-               if(principle == 0) {
+               if (principle <= 0) {
                    System.out.println("loan amount should be greater than zero");
                    System.exit(0);
                }
@@ -98,9 +98,9 @@ public class Amortizer {
        try {
             interest = (apr_str != null)? Double.parseDouble(apr_str): 0d;
             
-             if(interest > 1) {
-                   System.out.println("loan annual percentage rate should be in"
-                           + " decimal number format");
+             if (interest > 1 || interest < 0) {
+                   System.out.println("loan annual percentage rate should be "
+                           + "in a positive decimal number format");
                    System.exit(0);
                }
         } catch (NumberFormatException ex) {
@@ -115,8 +115,8 @@ public class Amortizer {
             termYears = (termYears_str != null)? 
                     Integer.parseInt(termYears_str): 0; 
             
-            if (termYears == 0) {
-                System.out.println("No scheduled payment for no loan term");
+            if (termYears <= 0) {
+                System.out.println("Loan term should a zero or a (postive) number of years");
                 System.exit(0);
             }
        } catch (NumberFormatException ex) {
