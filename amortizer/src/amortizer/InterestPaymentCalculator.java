@@ -26,7 +26,8 @@ public class InterestPaymentCalculator extends AbstractChain {
         if (loan.getCalculationWanted() == CalculationAction.INTEREST_PAYMENT)
         {                 
             // montly interest 
-            double monthlyInterest = loan.getAnnualPercentageRage() / 12;
+            double monthlyInterest = (loan.getAnnualPercentageRage() != 0)?
+                        loan.getAnnualPercentageRage() / 12 : 0;
             
             // interest paid
             double payment = 
