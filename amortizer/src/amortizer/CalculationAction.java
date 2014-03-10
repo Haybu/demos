@@ -12,14 +12,14 @@ package amortizer;
  */
 public enum CalculationAction {
     
-    MONTHLY_PAYMENT("monthlyPayment")
-    , BALANCE("balance")
-    , PRINCIPLE_PAYMENT("principlePayment")
-    , INTEREST_PAYMENT("interestPayment")
-    , START("start")
-    , DONE("done");
+        MONTHLY_PAYMENT("monthlyPayment")
+        , BALANCE("balance")
+        , PRINCIPLE_PAYMENT("principlePayment")
+        , INTEREST_PAYMENT("interestPayment")
+        , START("start")
+        , DONE("done");
  
-	private String action;
+        private String action;
  
 	private CalculationAction(String s) {
 		action = s;
@@ -28,6 +28,4 @@ public enum CalculationAction {
 	public String getActionCode() {
 		return action;
 	}
- 
-    
 }
