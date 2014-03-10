@@ -33,7 +33,7 @@ public class Amortizer {
     {              
        //Console console = System.console();
       
-       System.out.println("Welcome to Paypal Amortization Calculator Demo.");
+       System.out.println("\nWelcome to Paypal Amortization Calculator Demo.");
        System.out.println("This application is for demo purpose only.");
        System.out.println("For any help please contace Haytham Mohamed 773.454.3447");
        System.out.println("---------------------------------------------------------");
@@ -47,27 +47,32 @@ public class Amortizer {
        String principle_str = scanner.next();
        System.out.println();
        
-       while (principle_str == null) {
-           System.out.println("No input for loan amount is given. Please run the application again");
+       if (principle_str == null) {
+           System.out.println("No input for loan amount is given. "
+                   + "Please run the application again");
            System.exit(0);
        }
        
-       // interest rate in decimal point
-       System.out.print("Please Enter the annual percentage rate in decimal point (example: 0.05) : ");
+       // interest rate percentage
+       // could be 5 or 5%
+       System.out.print("Please Enter the annual percentage rate: ");
        String apr_str = scanner.next();
        System.out.println();
        
-       while (apr_str == null) {
+       if (apr_str == null) {
            System.out.println("No input for loan annua percentage rate is given."
                      +" Please run the application again");
            System.exit(0);
+       } else {
+           // strip the '%' sign out if any
+           apr_str = apr_str.replaceAll("%", "");
        }
        
        // loan term in number of years
        System.out.print("Please Enter the loan term in years: ");
        String termYears_str = scanner.next();
        
-        while (termYears_str == null) {
+       if (termYears_str == null) {
            System.out.println("No input for loan term in years is given."
                      + " Please run the application again");
            System.exit(0);
@@ -96,9 +101,11 @@ public class Amortizer {
        double interest = 0d;
        
        try {
-            interest = (apr_str != null)? Double.parseDouble(apr_str): 0d;
+            interest = Double.parseDouble(apr_str);
+            interest = 
+                    (interest > 0)? Double.parseDouble(apr_str) / 100 : 0d;
             
-             if (interest > 1 || interest < 0) {
+             if (interest < 0) {
                    System.out.println("loan annual percentage rate should be "
                            + "in a positive decimal number format");
                    System.exit(0);
@@ -151,7 +158,8 @@ public class Amortizer {
         System.out.printf("\n%-20.20s $%-20.2f $%-22.2f"
                 , "Total", calculator.getTotalPayments() 
                 , calculator.getTotalInterestPayments());
-       System.out.println();    
+       System.out.println();   
+       System.out.println();
     }
     
 }
