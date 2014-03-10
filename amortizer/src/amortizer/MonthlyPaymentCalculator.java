@@ -1,21 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- *//*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package amortizer;
+/**
+ * Monthly Payment calculator component. It computes the monthly payment amount.
+ * As the monthly payment is constant during the loan period, This component 
+ * evaluates the monthly payment only once. After it is done, it delegates to
+ * the next component in the calculation cycle.
+ * 
+ * @author Haytham Mohamed
+ */
 
 import java.math.BigDecimal;
 
-/**
- *
- * @author hmohamed
- */
 public class MonthlyPaymentCalculator extends AbstractChain {
     
     @Override
@@ -25,9 +19,11 @@ public class MonthlyPaymentCalculator extends AbstractChain {
         {  
            // increment the payment number
            loan.setPaymentNumber(loan.getPaymentNumber() + 1);
-           if(loan.getMonthlyPayment().doubleValue() == 0) {// do it just once
+           
+           // only perform the monthly payment calcuation once
+           if(loan.getMonthlyPayment().doubleValue() == 0) {
                 double monthlyInterest = 
-                        loan.getAnualPercentageRage() / 12;
+                        loan.getAnnualPercentageRage() / 12;
 
                 double payment = 
                   loan.getPrinciple().doubleValue() * 
@@ -37,11 +33,13 @@ public class MonthlyPaymentCalculator extends AbstractChain {
                 loan.setMonthlyPayment(new BigDecimal(payment));
            }
            
+           // set the total amount paid so far
            BigDecimal total = 
                    loan.getTotalPayments().add(loan.getMonthlyPayment());
            
            loan.setTotalPayments(total);
            
+           // next component to evaluate the interest paid
            loan.setCalculationWanted(CalculationAction.INTEREST_PAYMENT);
             
         } else {

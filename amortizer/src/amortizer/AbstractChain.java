@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package amortizer;
-
 /**
- *
- * @author hmohamed
+ * Abstract class to implement the chain interface. It houses methods to set
+ * and retrieve the next component in the chain.
+ * 
+ * @author Haytham Mohamed
  */
+
 public abstract class AbstractChain implements Chain {
     
     Chain nextChain;
@@ -24,7 +20,5 @@ public abstract class AbstractChain implements Chain {
     
     @Override
     abstract public void calculate(Loan loan);
-    
 
-    
 }
