@@ -6,8 +6,6 @@
 
 package amortizer;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author hmohamed
