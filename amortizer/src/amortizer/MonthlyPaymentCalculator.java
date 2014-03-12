@@ -5,6 +5,16 @@ package amortizer;
  * evaluates the monthly payment only once. After it is done, it delegates to
  * the next component in the calculation cycle.
  * 
+ * formula used to compute the montly payment:
+ *  M = P * ( J / (I (Math.pow(1/1+J), N))));
+ * 
+ *  where:
+ *  P = Principal
+ *  I = Interest
+ *  J = Monthly Interest in decimal form ( I * 100/ 12)
+ *  N = Number of months of loan
+ *  M = Monthly payment amount
+ * 
  * @author Haytham Mohamed
  */
 
