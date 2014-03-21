@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Todo Application Demo</title>
+
+    <link href="bower_components/bootstrap-css/css/bootstrap.css" rel="stylesheet" />
+    <link href="bower_components/bootstrap-css/css/bootstrap-theme.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<div class="container">
+    <div class="page-header">
+        <h1>TODO Application Demo<br> <small> Sample Application</small></h1>
+    </div>
+
+
+    <div ng-view></div>
+
+    <div class="page-footer">
+        <small> By: Haytham Mohamed | Austin, TX | Ph: 773.454.3447</small>
+    </div>
+
+</div>
+
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap-css/js/bootstrap.js"></script>
+<script src="web/services/TodoService.js"></script>
+<script src="web/controllers/TodoCtrl.js"></script>
+<script src="web/app.js"></script>
+
+</body>
+</html>

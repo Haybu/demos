@@ -1,0 +1,55 @@
+<!-- table to list to list -->
+<div class="row">
+        <form id="todoForm" name="todoForm" class="form-horizontal">
+            <!-- description field -->
+            <div class="col-lg-4" ng-class="{error: todoForm.description.$invalid}">
+                    <input class="form-control" type="text" ng-model="item.description" id="description" name="description" placeholder="What are you planning to do !!" />
+            </div>
+
+            <!-- description field -->
+            <div class="col-lg-4" ng-class="{error: todoForm.duedate.$invalid}">
+                <input class="form-control" type="date" placeholder="Due Date" ng-model="item.duedate">
+            </div>
+
+            <div class="col-lg-2">
+                <span ng-show="action=='add'"><button class="btn btn-primary" ng-click="addTodo()"> Add </button></span>
+                <span ng-show="action=='update'"><button class="btn btn-primary" ng-click="updateTodo()"> Update </button></span>
+                <button class="btn btn-default" ng-click="cancel()"> Cancel </button>
+            </div>
+        </form>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+
+        <th>
+            <a ng-click="sortBy('_id')"> ID </a>
+            <span ng-show="sortby=='_id' && is_desc==-1"><i class="glyphicon glyphicon-arrow-up"></i></span>
+            <span ng-show="sortby=='_id' && is_desc==1"><i class="glyphicon glyphicon-arrow-down"></i></span>
+        </th>
+
+        <th>
+            <a ng-click="sortBy('description')"> Description </a>
+            <span ng-show="sortby=='description' && is_desc==-1"><i class="glyphicon glyphicon-arrow-up"></i></span>
+            <span ng-show="sortby=='description' && is_desc==1"><i class="glyphicon glyphicon-arrow-down"></i></span>
+        </th>
+        <th>
+            <a ng-click="sortBy('duedate')"> Date </a>
+            <span ng-show="sortby=='duedate' && is_desc==-1"><i class="glyphicon glyphicon-arrow-up"></i></span>
+            <span ng-show="sortby=='duedate' && is_desc==1"><i class="glyphicon glyphicon-arrow-down"></i></span>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="todo in todos" id="r_{{todo._id.$oid}}">
+
+        <td>{{todo._id.$oid}}</td>
+
+        <td>{{todo.description}} </td>
+        <td>{{todo.duedate | date:mediumDate}}</td>
+        <td><a ng-click="deleteTodo()"><i class="glyphicon glyphicon-remove-circle"></i></a></td>
+        <td><a ng-click="editTodo()"><i class="glyphicon glyphicon-pencil"></i></a></td>
+    </tr>
+    </tbody>
+</table>
