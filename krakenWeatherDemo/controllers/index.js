@@ -2,8 +2,7 @@
 
 
 var CitiesModel = require('../models/index'),
-    request = require("request"),
-    http = require('http');
+    request = require("request");
 
 
 module.exports = function (app) {
@@ -65,9 +64,9 @@ module.exports = function (app) {
             });
 
         } else {
-		console.log("no city selected. weather data should cleared from the model/screen");
-		res.redirect('/');
-	}
+            console.log("no city selected. weather data should cleared from the model/screen");
+            res.redirect('/');
+	    }
 
     });
 
