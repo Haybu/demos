@@ -28,6 +28,7 @@ app.requestBeforeRoute = function requestBeforeRoute(server) {
     server.use(express.methodOverride());
     server.use(express.bodyParser());
 
+    // request parameter and body logger
     server.use(logger());
 };
 
