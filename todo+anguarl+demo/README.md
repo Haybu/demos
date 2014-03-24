@@ -1,0 +1,2 @@
+- clone this project
+- cd to the app folder, and access index.html from a browser (better with Chrome)
