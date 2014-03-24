@@ -7,3 +7,5 @@ demos
 
 3- todo+angular+demo: a todo demo app, "vanila" Angularjs app, stores data into MongoLab (MongoDB service) via RESTful API. By Haytham Mohamed
 
+4- todo-angular-test: This is a sample cloned from rackspace, uses local storage. 
+
